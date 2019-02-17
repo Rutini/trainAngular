@@ -1,0 +1,22 @@
+<div class="info" *ngIf="train">
+  <ul class="train">
+    <li>
+      Сполучення: <span>{{train.connection}}</span>
+    </li>
+    <li>
+      Номер: <span>{{train.number}}</span>
+    </li>
+    <li>
+      Тип: <span>{{train.type}}</span>
+    </li>
+    <li>
+      Кількість вагонів: <span>{{train.count_of_cars}}</span>
+    </li>
+    <li>
+      Час прибуття на стацію: <span>{{train.time_of_arrive}}</span>
+    </li>
+    <li>
+      Час відправлення від станції: <span>{{train.time_of_depart}}</span>
+    </li>
+  </ul>
+</div>

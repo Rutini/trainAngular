@@ -1,0 +1,20 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="list">
+<ul class="trains">
+  <li *ngFor="let train of trains">
+    <a routerLink="/trainInfo/{{train.id}}">
+      <span class="badge">{{train.number}}</span>
+      <span class="con">{{train.connection}}</span>
+
+      <i *ngIf="train.type=='поїзд'" class="material-icons">
+        train
+      </i>
+
+      <i *ngIf="train.type=='електричка'" class="material-icons">
+        tram
+      </i>
+    </a>
+  </li>
+</ul>
+</div>
