@@ -18,11 +18,8 @@ export class TrainService {
     return this.http.get<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}/${id}`);
   }
 
-  getAllTrains(): Observable<Response> {
-    return this.http.get<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}`);
+  getAllTrains(id): Observable<Response> {
+    return this.http.get<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}/fromStation/${id}`);
   }
 
-  deleteTrain(id): Observable<Response> {
-    return this.http.delete<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}/${id}`);
-  }
 }

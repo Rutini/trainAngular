@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Train} from '../models/Train';
 import {TrainService} from '../services/train.service';
 import {Response} from '../models/Response';
+import {ActivatedRoute} from '@angular/router';
+import {StationService} from '../services/station.service';
+import {Station} from '../models/Station';
 
 @Component({
   selector: 'app-trains',
@@ -11,44 +14,41 @@ import {Response} from '../models/Response';
 export class TrainsComponent implements OnInit {
 
   constructor(
-    private trainService: TrainService
+    private trainService: TrainService,
+    private route: ActivatedRoute,
+    private stationService: StationService
   ) {
   }
 
   trains: Train[];
-  train: Train;
-  isSelected = false;
+  stationId;
+  station: Station;
 
   ngOnInit() {
+    this.getStationId();
+    this.getStationInfo();
     this.getTrains();
   }
 
-  selectTrain() {
-    this.isSelected = !this.isSelected;
+  getStationId(): void {
+    this.stationId = +this.route.snapshot.paramMap.get('id');
   }
 
-  getTrain(id: number) {
-    this.trainService.getTrainInfo(id)
+  getStationInfo(): void {
+    this.stationService.getStationInfo(this.stationId)
       .subscribe((response: Response) => {
         if (response.success) {
-          this.train = response.message;
+          this.station = response.message;
         }
       });
   }
 
-  getTrains() {
-    this.trainService.getAllTrains()
+  getTrains(): void {
+    this.trainService.getAllTrains(this.stationId)
       .subscribe((response: Response) => {
         if (response.success) {
           this.trains = response.message;
         }
-      });
-  }
-
-  deleteTrain(id: number) {
-    this.trainService.deleteTrain(id)
-      .subscribe((response: Response) => {
-        console.log(response.message);
       });
   }
 

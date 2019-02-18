@@ -1,0 +1,8 @@
+<h1>Оберіть станцію</h1>
+<div class="main">
+  <a *ngFor="let station of stations" routerLink="/station/{{station.id}}">
+    <div class="module">
+      <h2>{{station.name}}</h2>
+    </div>
+  </a>
+</div>

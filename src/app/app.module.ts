@@ -6,12 +6,14 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { TrainsComponent } from './trains/trains.component';
 import { TrainInfoComponent } from './train-info/train-info.component';
+import { StationsComponent } from './stations/stations.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrainsComponent,
-    TrainInfoComponent
+    TrainInfoComponent,
+    StationsComponent
   ],
   imports: [
     BrowserModule,

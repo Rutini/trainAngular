@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  width: 30%;
+  float: right;
+  margin: 1%;
+}
+
+.module {
+  padding: 40px;
+  text-align: center;
+  color: #eee;
+  background-color: #607d8b;
+  border-radius: 8px;
+}
+.module:hover {
+  background-color: #eee;
+  cursor: pointer;
+  color: #607d8b;
+}
+
+.main {
+  width: 80%;
+  margin: 0 8.5%;
+}
+
+h1 {
+  color: #999;
+  margin: 50px 41%;
+}
