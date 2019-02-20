@@ -22,4 +22,16 @@ export class TrainService {
     return this.http.get<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}/fromStation/${id}`);
   }
 
+  updateTrain(id, train): Observable<Response> {
+    return this.http.put<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}/${id}`, train);
+  }
+
+  addTrain(train): Observable<Response> {
+    return this.http.post<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}`, train);
+  }
+
+  deleteTrain(id): Observable<Response> {
+    return this.http.delete<Response>(`${Hosts.API_HOST}/${this.trainApiUrl}/${id}`);
+  }
+
 }

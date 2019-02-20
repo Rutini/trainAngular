@@ -1,4 +1,4 @@
-.info {
+.main {
   background-color: #EEE;
   width: 336px;
   margin: 16px 38%;
@@ -9,23 +9,13 @@
   list-style-type: none;
 }
 
-span {
-  color: #696969;
-  text-decoration: none;
-}
-
 h1 {
   color: #999;
-  margin: 50px 39%;
+  margin: 50px 35%;
 }
 
 .goBack {
   margin: 0 41.6%;
-}
-
-.update {
-  margin: 0 53.7%;
-  border-radius: 2px;
 }
 
 .forBtn {
@@ -34,5 +24,10 @@ h1 {
 }
 
 .save {
-  margin-left: 55.8%;
+  margin-left: 12%;
 }
+
+.cancel {
+  margin-left: 38%;
+}
+

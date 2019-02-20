@@ -7,7 +7,7 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  /*width: 15em;*/
 }
 .trains li {
   position: relative;
@@ -16,7 +16,7 @@
   margin: .5em;
   padding: .3em 0;
   height: 1.6em;
-  width: 140%;
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -54,13 +54,43 @@
   border-radius: 4px 0 0 4px;
 }
 
-i {
+.trainIcon {
   color: black;
   float: right;
-  padding-right: 50px;
+  padding-right: 72px;
 }
 
 h1 {
   color: #999;
-  margin: 50px 33%;
+  margin: 50px 29%;
+  margin-top: 0;
+}
+
+.delete {
+  color: red;
+  position: relative;
+  left: 300px;
+  top: -41px;
+  padding: 5.5px;
+  border-radius: 4px;
+  background-color: #DDD !important;
+}
+
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 0 43.6%;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607d8b;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #cfd8dc;
+}
+nav a.active {
+  color: #039be5;
 }

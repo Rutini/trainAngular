@@ -6,4 +6,5 @@ export interface Train {
   count_of_cars: number;
   time_of_arrive: string;
   time_of_depart: string;
+  station_id: number;
 }

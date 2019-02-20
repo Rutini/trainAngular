@@ -1,6 +1,11 @@
 <h1>Інформативне табло</h1>
 
-<div class="info" *ngIf="train">
+<button class="update" *ngIf="!updateSelected" (click)="updateClick()">
+  Редагувати
+</button>
+
+
+<div class="info" *ngIf="train && !updateSelected">
   <ul class="train">
     <li>
       Сполучення: <span>{{train.connection}}</span>
@@ -23,6 +28,103 @@
   </ul>
 </div>
 
-<button (click)="goBack()">
+<form #updateForm="ngForm" class="info" *ngIf="updateSelected">
+
+  <label [ngStyle]="{color: con.invalid && con.touched ? 'red' : 'black'}">Сполучення:</label>
+  <input
+    type="text"
+    name="connection"
+    #con = "ngModel"
+    [(ngModel)]="newTrain.connection"
+    required
+  >
+
+  <br>
+
+  <label [ngStyle]="{color: name.invalid && name.touched ? 'red' : 'black'}">Номер:</label>
+  <input
+    type="text"
+    name="number"
+    #name = "ngModel"
+    [(ngModel)]="newTrain.number"
+    required
+  >
+
+  <br>
+
+  <label>Тип:</label>
+  <br>
+  <input
+    type="radio"
+    name="type"
+    value="поїзд"
+    [(ngModel)]="newTrain.type"
+  >
+  <label>поїзд</label>
+
+  <br>
+
+  <input
+    type="radio"
+    name="type"
+    value="електричка"
+    [(ngModel)]="newTrain.type"
+  >
+  <label>електричка</label>
+  <br>
+
+  <label [ngStyle]="{color: count.invalid && count.touched ? 'red' : 'black'}">Кількість вагонів:</label>
+  <input
+    type="text"
+    name="count_of_cars"
+    #count = "ngModel"
+    [(ngModel)]="newTrain.count_of_cars"
+    required
+  >
+
+  <br>
+
+  <label [ngStyle]="{color: time_arr.invalid && time_arr.touched ? 'red' : 'black'}">Час прибуття на станцію:</label>
+  <input
+    type="time"
+    name="time_of_arrive"
+    #time_arr = "ngModel"
+    [(ngModel)]="newTrain.time_of_arrive"
+    required
+  >
+
+  <br>
+
+  <label [ngStyle]="{color: time_dep.invalid && time_dep.touched ? 'red' : 'black'}">Час відправлення від станції:</label>
+  <input
+    type="time"
+    name="time_of_depart"
+    #time_dep = "ngModel"
+    [(ngModel)]="newTrain.time_of_depart"
+    required
+  >
+
+  <br>
+  <br>
+
+  <button *ngIf="updateSelected"
+          (click)="cancelClick()"
+          class="forBtn"
+  >Відмінити</button>
+
+  <button [disabled]="updateForm.invalid"
+          *ngIf="updateSelected"
+          (click)="updateTrain()"
+          class="save forBtn"
+  >Зберегти
+  </button>
+
+</form>
+
+
+<button *ngIf="!updateSelected"
+        (click)="goBack()"
+        class="goBack"
+>
   Повернутись до списку сполучень
 </button>

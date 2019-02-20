@@ -1,0 +1,92 @@
+<h1>Налаштуйте нове сполучення</h1>
+
+<form #addForm="ngForm" class="main">
+
+  <label [ngStyle]="{color: connection.touched && connection.invalid ? 'red' : 'black'}">Сполучення:</label>
+  <input
+    type="text"
+    name="connection"
+    ngModel
+    required
+    #connection = "ngModel"
+  >
+
+  <br>
+
+  <label [ngStyle]="{color: number.touched && number.invalid ? 'red' : 'black'}">Номер:</label>
+  <input
+    type="text"
+    name="number"
+    ngModel
+    required
+    #number = "ngModel"
+  >
+
+  <br>
+
+  <label>Тип:</label>
+  <br>
+  <input
+    type="radio"
+    name="type"
+    value="поїзд"
+    ngModel
+    required
+  >
+  <label>поїзд</label>
+
+  <br>
+
+  <input
+    type="radio"
+    name="type"
+    value="електричка"
+    ngModel
+    required
+  >
+  <label>електричка</label>
+  <br>
+
+  <label [ngStyle]="{color: count.touched && count.invalid ? 'red' : 'black'}">Кількість вагонів:</label>
+  <input
+    type="text"
+    name="count_of_cars"
+    ngModel
+    required
+    #count = "ngModel"
+  >
+
+  <br>
+
+  <label [ngStyle]="{color: time_arr.touched && time_arr.invalid ? 'red' : 'black'}">Час прибуття на станцію:</label>
+  <input
+    type="time"
+    name="time_of_arrive"
+    ngModel
+    required
+    #time_arr = "ngModel"
+  >
+
+  <br>
+
+  <label [ngStyle]="{color: time_dep.touched && time_dep.invalid ? 'red' : 'black'}">Час відправлення від станції:</label>
+  <input
+    type="time"
+    name="time_of_depart"
+    ngModel
+    required
+    #time_dep = "ngModel"
+  >
+
+</form>
+
+
+<button (click)="cancelClick()"
+        class="cancel forBtn"
+>Відмінити</button>
+
+<button (click)="addTrain(addForm.value)"
+        class="save forBtn"
+        [disabled]="addForm.invalid"
+>Зберегти
+</button>

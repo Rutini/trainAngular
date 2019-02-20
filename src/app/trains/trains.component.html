@@ -1,22 +1,41 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<h1>Список усіх поїздів на станції {{station.name}}</h1>
+<nav>
+  <a style="margin: 25px 46.6%" routerLink="/">на головну</a>
+</nav>
+
+<h1>Список усіх жд-сполучень на станції {{station.name}}</h1>
+
 
 <div class="list">
 <ul class="trains">
   <li *ngFor="let train of trains">
     <a routerLink="/trainInfo/{{train.id}}">
-      <span class="badge">{{train.number}}</span>
+      <span class="badge" title="номер">{{train.number}}</span>
       <span class="con">{{train.connection}}</span>
 
-      <i *ngIf="train.type=='поїзд'" class="material-icons">
+      <i *ngIf="train.type=='поїзд'"
+         class="material-icons trainIcon"
+         title="поїзд">
         train
       </i>
 
-      <i *ngIf="train.type=='електричка'" class="material-icons">
+      <i *ngIf="train.type=='електричка'"
+         class="material-icons trainIcon"
+         title="електричка">
         tram
       </i>
     </a>
+    <i class="material-icons delete"
+       title="видалити сполучення"
+       (click)="delete(train)">
+      clear
+    </i>
   </li>
 </ul>
 </div>
+
+<nav>
+  <a routerLink="/station/{{stationId}}/addTrain">додати нове сполучення</a>
+</nav>
+

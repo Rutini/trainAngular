@@ -52,4 +52,14 @@ export class TrainsComponent implements OnInit {
       });
   }
 
+  delete(train): void {
+    const id = train.id;
+
+    this.trainService.deleteTrain(id)
+      .subscribe((response: Response) => {
+        console.log(response.message);
+        this.trains = this.trains.filter(t => t !== train);
+      });
+  }
+
 }
