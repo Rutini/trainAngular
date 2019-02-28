@@ -1,0 +1,73 @@
+a {
+  padding: 5px 10px;
+  margin: 10px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+a:visited, a:link {
+  color: #607d8b;
+}
+a:hover {
+  color: #039be5;
+  background-color: #cfd8dc;
+  cursor: pointer;
+}
+a.active {
+  color: #039be5;
+}
+
+.welcomeUser {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #eee;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.forForm {
+  padding: 20px;
+  background-color: #EEE;
+  width: 309px;
+  margin: 16px 38%;
+  border-radius: 4px;
+}
+
+.flRight {
+  float: right;
+}
+
+.mainInpCol {
+  color: #008080;
+}
+
+.invalidColor {
+  color: red;
+}
+
+.myBtn {
+  padding: 5px 10px;
+  margin: 10px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.myBtn:visited, a:link {
+  color: #607d8b;
+}
+.myBtn:hover {
+  color: #008080;
+  background-color: #cfd8dc;
+  cursor: pointer;
+}
+.myBtn.active {
+  color: #008080;
+}
+
+h1 {
+  color: #999;
+  margin: 0 44%;
+}

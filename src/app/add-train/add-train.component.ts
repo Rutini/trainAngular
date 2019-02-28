@@ -4,6 +4,7 @@ import {TrainService} from '../services/train.service';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {Response} from '../models/Response';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-add-train',
@@ -15,15 +16,18 @@ export class AddTrainComponent implements OnInit {
   constructor(
     private trainService: TrainService,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService
   ) {
   }
 
   train: Train;
   StationId: number;
+  loggedUser = this.userService.loggedUser.value;
 
   ngOnInit() {
     this.getStationId();
+    console.log(this.loggedUser.id);
   }
 
   getStationId(): void {
@@ -35,14 +39,20 @@ export class AddTrainComponent implements OnInit {
   }
 
   addTrain(addedTrain): void {
-    this.train = addedTrain;
-    this.train.station_id = this.StationId;
-    console.log(this.train);
-    this.trainService.addTrain(this.train)
-      .subscribe((response: Response) => {
+    const isLogged = !!localStorage.getItem('token');
+    if (!isLogged) {
+      alert('Щоб додавати сполучення потрібно увійти!');
+    } else {
+      this.train = addedTrain;
+      this.train.station_id = this.StationId;
+      this.train.created_by = this.loggedUser.id;
+      console.log(this.train);
+      this.trainService.addTrain(this.train)
+        .subscribe((response: Response) => {
           console.log(response.message);
           this.location.back();
-      });
+        });
+    }
   }
 
 }

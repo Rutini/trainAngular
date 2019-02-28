@@ -1,6 +1,6 @@
 <h1>Інформативне табло</h1>
 
-<button class="update" *ngIf="!updateSelected" (click)="updateClick()">
+<button class="update" *ngIf="!updateSelected && train.created_by === loggedUser.id || loggedUser.credentials <= 2" (click)="updateClick()">
   Редагувати
 </button>
 

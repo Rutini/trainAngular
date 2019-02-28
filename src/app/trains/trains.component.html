@@ -26,7 +26,8 @@
         tram
       </i>
     </a>
-    <i class="material-icons delete"
+    <i *ngIf="train.created_by === loggedUser.id || loggedUser.credentials <= 2"
+       class="material-icons delete"
        title="видалити сполучення"
        (click)="delete(train)">
       clear
@@ -35,7 +36,7 @@
 </ul>
 </div>
 
-<nav>
+<nav *ngIf="isLogged">
   <a routerLink="/station/{{stationId}}/addTrain">додати нове сполучення</a>
 </nav>
 

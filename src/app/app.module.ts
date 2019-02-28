@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import { AddTrainComponent } from './add-train/add-train.component';
 import {TrainService} from './services/train.service';
 import {StationService} from './services/station.service';
+import {UserService} from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import {StationService} from './services/station.service';
     TrainsComponent,
     TrainInfoComponent,
     StationsComponent,
-    AddTrainComponent,
+    AddTrainComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,8 @@ import {StationService} from './services/station.service';
   ],
   providers: [
     TrainService,
-    StationService
+    StationService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

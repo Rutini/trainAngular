@@ -4,6 +4,7 @@ import {TrainService} from '../services/train.service';
 import {ActivatedRoute} from '@angular/router';
 import {Response} from '../models/Response';
 import {Location} from '@angular/common';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-train-info',
@@ -15,7 +16,8 @@ export class TrainInfoComponent implements OnInit {
   constructor(
     private trainService: TrainService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private userService: UserService
   ) {
   }
 
@@ -23,6 +25,7 @@ export class TrainInfoComponent implements OnInit {
   newTrain: Train;
   updateSelected = false;
   id: number;
+  loggedUser = this.userService.loggedUser.value;
 
   ngOnInit() {
     this.getTrain();
@@ -52,6 +55,7 @@ export class TrainInfoComponent implements OnInit {
 
   updateTrain(): void {
     this.train = JSON.parse(JSON.stringify(this.newTrain));
+    this.train.created_by = this.loggedUser.id;
     this.trainService.updateTrain(this.id, this.train)
       .subscribe((response: Response) => {
           console.log(response.message);

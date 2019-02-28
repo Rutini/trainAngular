@@ -5,6 +5,7 @@ import {Response} from '../models/Response';
 import {ActivatedRoute} from '@angular/router';
 import {StationService} from '../services/station.service';
 import {Station} from '../models/Station';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-trains',
@@ -16,10 +17,13 @@ export class TrainsComponent implements OnInit {
   constructor(
     private trainService: TrainService,
     private route: ActivatedRoute,
-    private stationService: StationService
+    private stationService: StationService,
+    private userService: UserService
   ) {
   }
 
+  loggedUser = this.userService.loggedUser.value;
+  isLogged;
   trains: Train[];
   stationId;
   station: Station;
@@ -28,6 +32,11 @@ export class TrainsComponent implements OnInit {
     this.getStationId();
     this.getStationInfo();
     this.getTrains();
+    this.getLogged();
+  }
+
+  getLogged(): void {
+    this.isLogged = !!localStorage.getItem('token');
   }
 
   getStationId(): void {

@@ -1,1 +1,100 @@
-<router-outlet></router-outlet>
+<div class="welcomeUser">
+  Мої вітання, <b>{{loggedUser.name}}</b>!
+</div>
+<a *ngIf="!isLogged" (click)="loginClick()" >Увійти</a>
+<a *ngIf="!isLogged" (click)="registerClick()" >Зареєструватися</a>
+<a *ngIf="isLogged" (click)="sighOut()">Вийти</a>
+
+
+<h1 *ngIf="isRegisterClicked">Реєстрація</h1>
+
+<form class="forForm" #registerForm="ngForm" *ngIf="isRegisterClicked" (ngSubmit)="sendNewUser(name.value, email.value, password.value)">
+
+  <label [ngClass]="name.touched && name.invalid ? 'invalidColor' : 'mainInpCol' ">Ім'я: </label>
+
+  <input class="flRight"
+         type="text"
+         required
+         name="name"
+         #name="ngModel"
+         placeholder="Василь"
+         ngModel
+  >
+
+  <br>
+  <br>
+
+  <label [ngClass]="email.touched && email.invalid ? 'invalidColor' : 'mainInpCol' ">Ваш email: </label>
+
+  <input class="flRight"
+         type="email"
+         required
+         name="email"
+         #email="ngModel"
+         placeholder="vasyl@example.com"
+         ngModel
+  >
+
+  <br>
+  <br>
+
+  <label [ngClass]="password.touched && password.invalid ? 'invalidColor' : 'mainInpCol' ">Пароль: </label>
+
+  <input class="flRight"
+         type="password"
+         required
+         name="password"
+         #password="ngModel"
+         placeholder="********"
+         ngModel
+  >
+
+  <br>
+  <br>
+  <button class="myBtn flRight" [disabled]="registerForm.invalid">Надіслати</button>
+  <button (click)="cancel()" class="myBtn">Відміна</button>
+
+
+</form>
+
+
+<h1 *ngIf="isLoginClicked">Логінація</h1>
+
+<form class="forForm" #loginForm="ngForm" *ngIf="isLoginClicked" (ngSubmit)="sendLoginDataUser(email.value, password.value)">
+
+  <label [ngClass]="email.touched && email.invalid ? 'invalidColor' : 'mainInpCol' ">Ваш email: </label>
+
+  <input class="flRight"
+         type="email"
+         required
+         name="email"
+         #email="ngModel"
+         placeholder="example@example.com"
+         ngModel
+  >
+
+  <br>
+  <br>
+
+  <label [ngClass]="password.touched && password.invalid ? 'invalidColor' : 'mainInpCol' ">Пароль: </label>
+
+  <input class="flRight"
+         type="password"
+         required
+         name="password"
+         #password="ngModel"
+         placeholder="********"
+         ngModel
+  >
+
+  <br>
+  <br>
+
+  <button class="myBtn flRight" [disabled]="loginForm.invalid">Увійти</button>
+  <button (click)="cancel()" class="myBtn">Відміна</button>
+
+
+</form>
+
+
+<router-outlet *ngIf="!(isLoginClicked || isRegisterClicked)"></router-outlet>

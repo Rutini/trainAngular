@@ -7,4 +7,5 @@ export interface Train {
   time_of_arrive: string;
   time_of_depart: string;
   station_id: number;
+  created_by: number;
 }
